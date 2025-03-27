@@ -24,8 +24,10 @@ namespace projetoLojaAsp.Controllers
             if (ModelState.IsValid)
             {
                 _produtoRepositorio.AdicionarProduto(produto);
+                return RedirectToAction("Produto");
+            
             }  
-            return View();  
+            return View(produto);  
         }
 
     }

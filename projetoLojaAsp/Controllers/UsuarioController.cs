@@ -43,7 +43,7 @@ namespace projetoLojaAsp.Controllers
                 _usuarioRepositorio.AdicionarUsuario(usuario);
                 return RedirectToAction("Usuario");
             }
-            return View();
+            return View(usuario);
         }
     }
 }
