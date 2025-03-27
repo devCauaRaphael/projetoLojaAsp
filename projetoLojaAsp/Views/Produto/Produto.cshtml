@@ -1,4 +1,21 @@
-﻿
+﻿@model projetoLojaAsp.Models.Produto
 @{
-
+    ViewData["Title"] = "Cadastro de Produtos";
 }
+<h2>Register</h2>
+
+<form asp-action="Cadastro" method="post">
+    <div>
+        <label>Nome do produto:</label>
+        <input asp-for="name" required />
+    </div>
+    <div>
+        <label>Descrição:</label>
+        <input asp-for="description" type="text" required />
+    </div>
+    <div>
+        <label>Preço:</label>
+        <input asp-for="price" type="number" required />
+    </div>
+    <button type="submit">Novo Cadastrado</button>
+</form>
