@@ -10,7 +10,7 @@
         {
             using (var db = new Conexao(_connectionString))
             {
-                var cmd = db.CreateCommand();
+                var cmd = db.MySqlCommand();
                 cmd.CommandText = "INSERT INTO Produtos (Nome, Email, Senha) VALUES (@Nome, @Email, @Senha)";
                 cmd.Parameters.AddWithValue("@name", produto.name);
                 cmd.Parameters.AddWithValue("@description", produto.description);

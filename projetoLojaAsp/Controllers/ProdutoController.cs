@@ -8,5 +8,18 @@ namespace projetoLojaAsp.Controllers
         {
             return View();
         }
+        [HttpPost]
+
+        public IActionResult Produto()
+        {
+            if (ModelState.IsValid) 
+            { 
+                    _pro
+            }
+            
+            return View(); 
+        
+        }
+
     }
 }
