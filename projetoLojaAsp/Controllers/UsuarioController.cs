@@ -4,7 +4,7 @@ namespace projetoLojaAsp.Controllers
 {
     public class UsuarioController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Usuario()
         {
             return View();
         }
