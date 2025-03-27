@@ -19,7 +19,7 @@ namespace projetoLojaAsp.Controllers
 
         [HttpPost]
 
-        public IActionResult Produto(Produtos produto)
+        public IActionResult Produto(Produto produto)
         {
             if (ModelState.IsValid)
             {

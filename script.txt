@@ -1,0 +1,20 @@
+/* criando o banco de dados*/
+create database dbSystem;
+/*usando o banco*/
+use dbSystem;
+
+/*criando a tabela produto*/
+create table Produto(
+	id int primary key,
+    name varchar(50) not null,
+    description varchar(50) not null,
+    price decimal(11,4) not null
+);
+
+/*criando a table Usuario*/
+create table Usuario(
+	id int primary key,
+    name varchar(50) not null,
+    password varchar(50) not null,
+    email varchar(50) not null
+);

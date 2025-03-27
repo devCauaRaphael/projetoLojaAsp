@@ -11,7 +11,7 @@ namespace projetoLojaAsp.Repositorio
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
-        public void AdicionarProduto(Produtos produto )
+        public void AdicionarProduto(Produto produto )
         {
             using (var db = new Conexao(_connectionString))
             {
