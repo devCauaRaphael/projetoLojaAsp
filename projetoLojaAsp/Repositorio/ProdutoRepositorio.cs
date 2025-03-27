@@ -1,12 +1,17 @@
-﻿namespace projetoLojaAsp.Repositorio
+﻿using projetoLojaAsp.Models;
+
+namespace projetoLojaAsp.Repositorio
 {
     public class ProdutoRepositorio
     {
         private readonly string _connectionString;
 
-        public ProdutoRepositorio(IConfiguration configuration) => _connectionString = configuration.GetConnectionString("DefaultConnection");
+        public ProdutoRepositorio(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
+        }
 
-        public void AdicionarProduto(Produto produto )
+        public void AdicionarProduto(Produtos produto )
         {
             using (var db = new Conexao(_connectionString))
             {
@@ -24,3 +29,4 @@
         }
     }
 }
+
