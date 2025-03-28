@@ -17,8 +17,17 @@ namespace projetoLojaAsp.Controllers
         {
             return View();
         }
+
+
+        public IActionResult Login()
+        {
+            return View();
+        
+        }        
+        
+        
         [HttpPost]
-        public IActionResult Usuario(string password, string email)
+        public IActionResult Login(string password, string email)
         {
             var usuario = _usuarioRepositorio.ObterUsuario(email);
             if (usuario != null && usuario.password == password) {
