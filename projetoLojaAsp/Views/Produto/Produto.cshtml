@@ -4,7 +4,7 @@
 }
 <h2>Register</h2>
 
-<form asp-action="Cadastro" method="post">
+<form  asp-controller="Produto" asp-action="Produto" method="post">
     <div>
         <label>Nome do produto:</label>
         <input asp-for="name" required />
@@ -15,7 +15,7 @@
     </div>
     <div>
         <label>Preço:</label>
-        <input asp-for="price" type="number" required />
+        <input asp-for="price" type="text" required />
     </div>
     <button type="submit">Novo Cadastrado</button>
 </form>

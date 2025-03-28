@@ -18,27 +18,6 @@ namespace projetoLojaAsp.Controllers
             return View();
         }
 
-
-        public IActionResult Login()
-        {
-            return View();
-        
-        }        
-        
-        
-        [HttpPost]
-        public IActionResult Login(string password, string email)
-        {
-            var usuario = _usuarioRepositorio.ObterUsuario(email);
-            if (usuario != null && usuario.password == password) {
-
-                return RedirectToAction("Index", "Home");
-            }
-            ModelState.AddModelError("", "Email ou senha inválidos");
-
-            return View();
-        }
-
         public IActionResult Cadastro()
         {
             return View();

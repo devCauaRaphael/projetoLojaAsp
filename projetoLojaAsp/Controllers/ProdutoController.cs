@@ -25,8 +25,8 @@ namespace projetoLojaAsp.Controllers
             {
                 _produtoRepositorio.AdicionarProduto(produto);
                 return RedirectToAction("Produto");
-            
-            }  
+            }
+            ModelState.AddModelError("", "Digite apenas valores válidos");
             return View(produto);  
         }
 

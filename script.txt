@@ -10,11 +10,21 @@ create table Produto(
     description varchar(50) not null,
     price decimal(11,4) not null
 );
-
-/*criando a table Usuario*/
+alter table Produto modify column id int auto_increment;
+/*criando a tabela Usuario*/
 create table Usuario(
 	id int primary key,
     name varchar(50) not null,
     password varchar(50) not null,
     email varchar(50) not null
 );
+alter table Usuario modify column id int auto_increment;
+
+/*criando a tabela Funcionrio*/
+create table Funcionario(
+	id int primary key auto_increment,
+    name varchar(50) not null,
+    password varchar(50) not null,
+    email varchar(50) not null
+);
+
