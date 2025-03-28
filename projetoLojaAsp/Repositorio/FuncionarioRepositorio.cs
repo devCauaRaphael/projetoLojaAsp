@@ -27,6 +27,34 @@ namespace projetoLojaAsp.Repositorio
             }
             
         }
-        public void ObterUsuario(Funcionario funcionario)
+        public Funcionario ObterFuncionario(string email)
+        {
+            using (var db = new Conexao(_connectionString))
+            {
+                var cmd = db.MySqlCommand();
+                cmd.CommandText = "SELECT * FROM Funcionario WHERE email = @email";
+                cmd.Parameters.AddWithValue("@email", email);
+
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new Funcionario
+                        {
+                            id = reader.GetInt32("id"),
+                            name = reader.GetString("name"),
+                            email = reader.GetString("email"),
+                            password = reader.GetString("password"),
+
+                        };
+
+                    }
+
+                }
+                return null;
+            }
+        }
     }
 }
+

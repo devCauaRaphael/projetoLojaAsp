@@ -20,7 +20,7 @@ namespace projetoLojaAsp.Controllers
         public IActionResult LoginFuncionario(string password, string email)
         {
             var funcionario = _funcionarioRepositorio.ObterFuncionario(email);
-            if(funcionario != null && funcionario.password = password)
+            if(funcionario != null && funcionario.password == password)
             {
                 return RedirectToAction("Produto", "Produto");
             }
