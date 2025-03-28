@@ -1,4 +1,5 @@
 ﻿using projetoLojaAsp.Models;
+using System.Security.Cryptography.X509Certificates;
 
 namespace projetoLojaAsp.Repositorio
 {
@@ -24,6 +25,8 @@ namespace projetoLojaAsp.Repositorio
 
 
             }
+            
         }
+        public void ObterUsuario(Funcionario funcionario)
     }
 }
