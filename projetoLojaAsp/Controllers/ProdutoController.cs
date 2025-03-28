@@ -16,7 +16,7 @@ namespace projetoLojaAsp.Controllers
 
         public IActionResult Produto()
         {
-            // 🔹 Verifica se o usuário é um funcionário antes de permitir acesso
+            // Verifica se o usuário é um funcionário antes de permitir acesso
             if (!FuncionarioLogado.EstaLogado)
             {
                 return RedirectToAction("LoginFuncionario", "LoginFuncionario");
@@ -28,7 +28,7 @@ namespace projetoLojaAsp.Controllers
         [HttpPost]
         public IActionResult Produto(Produto produto)
         {
-            // 🔹 Verifica novamente no POST se o funcionário está logado
+            // Verifica novamente no POST se o funcionário está logado
             if (!FuncionarioLogado.EstaLogado)
             {
                 return RedirectToAction("LoginFuncionario", "LoginFuncionario");

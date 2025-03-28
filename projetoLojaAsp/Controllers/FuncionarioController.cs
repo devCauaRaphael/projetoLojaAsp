@@ -28,8 +28,8 @@ namespace projetoLojaAsp.Controllers
             {
                 _funcionarioRepositorio.AdicionarFuncionario(funcionario);
                 return RedirectToAction("LoginFuncionario", "LoginFuncionario");
-            }
 
+            }
             return View(funcionario);
         }
 

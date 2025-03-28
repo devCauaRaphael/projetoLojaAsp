@@ -18,26 +18,17 @@ namespace projetoLojaAsp.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public IActionResult LoginFuncionario(string password, string email)
         {
             var funcionario = _funcionarioRepositorio.ObterFuncionario(email);
-
             if (funcionario != null && funcionario.password == password)
             {
-                FuncionarioLogado.EstaLogado = true; // 🔹 Marca o funcionário como logado
-                return RedirectToAction("Produto", "Produto"); // Redireciona para a página de produtos
+                FuncionarioLogado.EstaLogado = true;
+                return RedirectToAction("Produto", "Produto");
             }
-
             ModelState.AddModelError("", "Email ou senha inválidos");
             return View();
-        }
-
-        public IActionResult Logout()
-        {
-            FuncionarioLogado.EstaLogado = false; // 🔹 Desloga o funcionário
-            return RedirectToAction("LoginFuncionario");
         }
     }
 }
