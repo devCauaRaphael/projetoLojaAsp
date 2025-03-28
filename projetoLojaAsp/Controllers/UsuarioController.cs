@@ -29,7 +29,7 @@ namespace projetoLojaAsp.Controllers
             if (ModelState.IsValid)
             {
                 _usuarioRepositorio.AdicionarUsuario(usuario);
-                return RedirectToAction("Usuario");
+                return RedirectToAction("Login", "Login");
             }
             return View(usuario);
         }

@@ -1,49 +1,47 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using projetoLojaAsp.Repositorio;
 using projetoLojaAsp.Models;
+using projetoLojaAsp.Helpers; // Importa a classe FuncionarioLogado
 
 namespace projetoLojaAsp.Controllers
 {
-    public class ProdutoController : Controller 
+    public class ProdutoController : Controller
     {
         private readonly ProdutoRepositorio _produtoRepositorio;
-        private readonly FuncionarioRepositorio _funcionarioRepositorio;
-        public ProdutoController(ProdutoRepositorio produtoRepositorio, FuncionarioRepositorio funcionarioRepositorio)
-        { 
+
+        public ProdutoController(ProdutoRepositorio produtoRepositorio)
+        {
             _produtoRepositorio = produtoRepositorio;
-            _funcionarioRepositorio = funcionarioRepositorio;
         }
 
         public IActionResult Produto()
         {
+            // 🔹 Verifica se o usuário é um funcionário antes de permitir acesso
+            if (!FuncionarioLogado.EstaLogado)
+            {
+                return RedirectToAction("LoginFuncionario", "LoginFuncionario");
+            }
+
             return View();
         }
 
         [HttpPost]
-
-        public IActionResult Produto(Produto produto, string email)
+        public IActionResult Produto(Produto produto)
         {
-            if (string.IsNullOrEmpty(email))
+            // 🔹 Verifica novamente no POST se o funcionário está logado
+            if (!FuncionarioLogado.EstaLogado)
             {
-                ModelState.AddModelError("", "O e-mail do funcionário é obrigatório.");
-                return View(produto);
+                return RedirectToAction("LoginFuncionario", "LoginFuncionario");
             }
 
-            var funcionario = _funcionarioRepositorio.ObterFuncionario(email);
-
-            if (funcionario == null)
-            {
-                ModelState.AddModelError("", "Funcionário não encontrado.");
-                return View(produto);
-            }
             if (ModelState.IsValid)
             {
                 _produtoRepositorio.AdicionarProduto(produto);
                 return RedirectToAction("Produto");
             }
-            ModelState.AddModelError("", "Digite apenas valores válidos");
-            return View(produto);  
-        }
 
+            ModelState.AddModelError("", "Digite apenas valores válidos");
+            return View(produto);
+        }
     }
 }

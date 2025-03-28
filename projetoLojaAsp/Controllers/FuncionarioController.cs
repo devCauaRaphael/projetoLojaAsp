@@ -27,10 +27,10 @@ namespace projetoLojaAsp.Controllers
             if (ModelState.IsValid)
             {
                 _funcionarioRepositorio.AdicionarFuncionario(funcionario);
-                return RedirectToAction("Funcionario");
+                return RedirectToAction("LoginFuncionario", "LoginFuncionario");
             }
 
-            return View("Funcionario");
+            return View(funcionario);
         }
 
 
