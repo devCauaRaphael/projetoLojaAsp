@@ -8,6 +8,9 @@ builder.Services.AddControllersWithViews();
 //adicionando UsuarioRepositorio
 builder.Services.AddScoped<UsuarioRepositorio>();
 
+//adicionando FuncionarioRepositorio
+builder.Services.AddScoped<FuncionarioRepositorio>();
+
 //adicionando ProdutoRepositorio
 builder.Services.AddScoped<ProdutoRepositorio>();
 
