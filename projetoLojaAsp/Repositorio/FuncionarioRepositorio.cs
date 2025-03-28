@@ -16,7 +16,7 @@ namespace projetoLojaAsp.Repositorio
             using (var db = new Conexao(_connectionString))
             {
                 var cmd = db.MySqlCommand();
-                cmd.CommandText = "INSERT INTO Usuario (name, email, password) VALUES (@name, @email, @password)";
+                cmd.CommandText = "INSERT INTO Funcionario (name, email, password) VALUES (@name, @email, @password)";
                 cmd.Parameters.AddWithValue("@name", funcionario.name);
                 cmd.Parameters.AddWithValue("@email", funcionario.email);
                 cmd.Parameters.AddWithValue("@password", funcionario.password);
