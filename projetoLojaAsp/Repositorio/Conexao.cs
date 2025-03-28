@@ -4,15 +4,24 @@ using System.Data;
 namespace projetoLojaAsp.Repositorio
 {
     public class Conexao: IDisposable
-    {
-        private MySqlConnection _connection;
+ {
+        private readonly MySqlConnection _connection;
 
         public Conexao(string connectionString)
-        {
-            _connection = new MySqlConnection(connectionString);
-            _connection.Open();
+            {
+        try
+            {
+             
+               
+                _connection = new MySqlConnection(connectionString);
+                  _connection.Open();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine($"Erro ao conectar ao banco: {ex.Message}");
+                throw; // Lança novamente a exceção para ver no log
+            }
         }
-
         public MySqlCommand MySqlCommand()
         {
             return _connection.CreateCommand();
@@ -29,5 +38,7 @@ namespace projetoLojaAsp.Repositorio
     }
 
 }
+
+
 
 

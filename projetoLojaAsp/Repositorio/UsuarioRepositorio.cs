@@ -16,7 +16,7 @@ namespace projetoLojaAsp.Repositorio
             using (var db = new Conexao(_connectionString))
             {
                 var cmd = db.MySqlCommand();
-                cmd.CommandText = "INSERT INTO Usuarios (name, email, senha) VALUES (@name, @email, @password)";
+                cmd.CommandText = "INSERT INTO Usuario (name, email, password) VALUES (@name, @email, @password)";
                 cmd.Parameters.AddWithValue("@name", usuario.name);
                 cmd.Parameters.AddWithValue("@email", usuario.email);
                 cmd.Parameters.AddWithValue("@password", usuario.password);
@@ -32,8 +32,8 @@ namespace projetoLojaAsp.Repositorio
             {
                 var cmd = db.MySqlCommand();
                 cmd.CommandText = "SELECT * FROM Usuario WHERE Email = @Email";
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.ExecuteNonQuery();
+                cmd.Parameters.AddWithValue("@email", email);
+    
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -41,10 +41,10 @@ namespace projetoLojaAsp.Repositorio
                     {
                         return new Usuario
                         {
-                            id = reader.GetInt32("Id"),
-                            name = reader.GetString("Nome"),
-                            email = reader.GetString("Email"),
-                            password = reader.GetString("Senha"),
+                            id = reader.GetInt32("id"),
+                            name = reader.GetString("name"),
+                            email = reader.GetString("email"),
+                            password = reader.GetString("password"),
 
                         };
 
